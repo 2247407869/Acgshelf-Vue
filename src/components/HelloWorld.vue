@@ -60,7 +60,7 @@ export default {
     }
   },
   created: function() {
-    this.$http.get('http://localhost:8080/listCategory',{params:this.url_params})
+    this.$http.get('http://localhost:8080/anime/rank',{params:this.url_params})
       .then((response) => {
         this.animes=response.data.list;
       });
