@@ -19,28 +19,8 @@
           <el-radio-button label="4">在看</el-radio-button>
           <el-radio-button label="5">看过</el-radio-button>
         </el-radio-group>
-        <!--<el-button type="text" @click="dialogVisible = true">修改</el-button>-->
       </div>
     </li>
-
-    <!--<el-dialog-->
-      <!--title="修改"-->
-      <!--:visible.sync="dialogVisible"-->
-      <!--width="30%">-->
-      <!--&lt;!&ndash;:before-close="handleClose"&ndash;&gt;-->
-      <!--<el-radio-group v-model="radio" size="mini">-->
-        <!--<el-radio-button label="抛弃"></el-radio-button>-->
-        <!--<el-radio-button label="搁置"></el-radio-button>-->
-        <!--<el-radio-button label="想看"></el-radio-button>-->
-        <!--<el-radio-button label="在看"></el-radio-button>-->
-        <!--<el-radio-button label="看过"></el-radio-button>-->
-      <!--</el-radio-group>-->
-
-      <!--<span slot="footer" class="dialog-footer">-->
-        <!--<el-button @click="dialogVisible = false">取 消</el-button>-->
-        <!--<el-button type="primary" @click="dialogVisible = false">确 定</el-button>-->
-      <!--</span>-->
-    <!--</el-dialog>-->
   </div>
 
 </template>
@@ -67,13 +47,8 @@ export default {
   },
   methods:{
     collectionChange(id,collection){
-      this.$http.post('http://localhost:8080/listCategory/'+id+'?collection='+collection);
+      this.$http.post('http://localhost:8080/anime/'+id+'?collection='+collection);
       console.log("send ok");
-
-      // this.$http.get('http://localhost:8080/listCategory',{params:this.url_params})
-      //   .then((response) => {
-      //     this.animes=response.data.list;
-      //   });
     }
   }
 

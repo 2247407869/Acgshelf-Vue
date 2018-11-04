@@ -1,11 +1,27 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header height="51px">
-
+      <el-header height="42px">
+        <div class="header-wrapper">
+          <div class="nav_con fl">
+            <ul class="fl">
+              <li class="nav-item"><router-link class="nav-link" to="/">ACGshelf</router-link></li>
+            </ul>
+          </div>
+          <div class="nav_con fr">
+            <ul class="fr" v-if="islogin === false">
+              <li class="nav-item"><router-link class="nav-link" to="/login">Login</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/register">Register</router-link></li>
+            </ul>
+            <ul class="fr" v-else>
+              <li class="nav-item"><router-link class="nav-link" to="/{id}/detail">{username}</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/login">Logout</router-link></li>
+            </ul>
+          </div>
+        </div>
       </el-header>
       <el-main>
-        <router-view/>
+        <router-view></router-view>
       </el-main>
     </el-container>
   </div>
@@ -13,7 +29,19 @@
 
 <script>
   export default {
-    name: 'App'
+    name: 'App',
+    data() {
+      return {
+        islogin: false,
+        // user_token: sessionStorage.user_token
+      }
+    },
+    methods: {
+      // loginToken(user_token){
+      //   sessionStorage.user_token = user_token;
+      //   this.user_token = sessionStorage.user_token;
+      // }
+    }
   }
 </script>
 
@@ -34,6 +62,27 @@
     background-color: hsla(0,0%,100%,.4);
     color: #333;
     text-align: center;
+  }
+
+  .header-wrapper{
+    margin: 0 auto;
+    width: 1160px;
+  }
+
+  .nav-item{
+    float: left;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .fl {
+    float: left;
+  }
+
+  .fr {
+    float: right;
   }
 
   .el-main {
