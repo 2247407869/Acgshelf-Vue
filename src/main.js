@@ -46,10 +46,6 @@ new Vue({
         alert('需要重新登录');
       });
     }
-
-
-
-
   },
   template: '<App/>'
 });

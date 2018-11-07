@@ -47,7 +47,14 @@ export default {
   },
   methods:{
     collectionChange(id,collection){
-      this.$http.post('http://localhost:8080/anime/'+id+'?collection='+collection);
+      this.$http.post('http://localhost:8080/anime/'+id,
+        {'x-authorization':this.$store.state.token},
+        {"collection":collection})
+        .catch(function (error) {
+        console.log(error);
+        _this.$store.commit('delete_token');
+        alert('需要重新登录');
+      });
       console.log("send ok");
     }
   }

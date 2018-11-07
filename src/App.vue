@@ -14,7 +14,7 @@
               <li class="nav-item"><router-link class="nav-link" to="/register">Register</router-link></li>
             </ul>
             <ul class="fr" v-else>
-              <li class="nav-item"><router-link class="nav-link" to="/{id}/detail">{{$store.state.username}}</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/">{{$store.state.username}}</router-link></li>
               <li class="nav-item"><div class="nav-link" v-on:click="logout">Logout</div></li>
             </ul>
           </div>
