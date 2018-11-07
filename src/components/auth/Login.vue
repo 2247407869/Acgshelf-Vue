@@ -37,7 +37,7 @@
               if(response.data.status === '1'){
                 alert("用户名密码错误")
               }else {
-                _this.$store.commit('set_token', response.data.token);
+                _this.$store.commit('set_token', response.data);
                 alert('登录成功');
                 _this.$router.push('/');
               }

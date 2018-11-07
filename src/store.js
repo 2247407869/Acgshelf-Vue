@@ -3,13 +3,21 @@ import vuex from 'vuex'
 Vue.use(vuex);
 var store = new vuex.Store({//store对象
   state:{
-    token:''
+    token:'',
+    username:'',
   },
   mutations: {
     set_token (state, token) {
       state.token = token;
-      // sessionStorage.token = token
-      document.cookie = 'token' + "=" + token;
+      state.username = username;
+      localStorage.setItem(token, token);
+      localStorage.setItem(username, username);
+    },
+    delete_token(state){
+      state.token = '';
+      state.username = '';
+      localStorage.setItem(token, '');
+      localStorage.setItem(username, '');
     }
   }
 });

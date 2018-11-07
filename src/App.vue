@@ -9,13 +9,13 @@
             </ul>
           </div>
           <div class="nav_con fr">
-            <ul class="fr" v-if="islogin === false">
+            <ul class="fr" v-if="!$store.state.token">
               <li class="nav-item"><router-link class="nav-link" to="/login">Login</router-link></li>
               <li class="nav-item"><router-link class="nav-link" to="/register">Register</router-link></li>
             </ul>
             <ul class="fr" v-else>
-              <li class="nav-item"><router-link class="nav-link" to="/{id}/detail">{username}</router-link></li>
-              <li class="nav-item"><router-link class="nav-link" to="/login">Logout</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/{id}/detail">{{$store.state.username}}</router-link></li>
+              <li class="nav-item"><div class="nav-link" v-on:click="logout">Logout</div></li>
             </ul>
           </div>
         </div>
@@ -32,15 +32,14 @@
     name: 'App',
     data() {
       return {
-        islogin: false,
         // user_token: sessionStorage.user_token
       }
     },
     methods: {
-      // loginToken(user_token){
-      //   sessionStorage.user_token = user_token;
-      //   this.user_token = sessionStorage.user_token;
-      // }
+      logout(){
+        this.$store.commit('delete_token');
+        alert('登出成功');
+      }
     }
   }
 </script>
