@@ -27,10 +27,29 @@ new Vue({
   router,
   components: { App },
   created(){
-    if(localStorage.getItem("token")!==null){
-      this.$store.state.token = localStorage.getItem("token");
-      this.$store.state.username = localStorage.getItem("username");
+    if(localStorage.getItem("token")===null){
+      localStorage.setItem("token",'');
     }
+    this.$store.commit("set_token", {token:localStorage.getItem("token"),
+        username:localStorage.getItem("username")});
+    if(this.$store.state.token!==''){
+      var _this = this;
+      this.$ajax.get('http://localhost:8080/refreshToken',
+        {headers:{'x-authorization':this.$store.state.token}})
+        .then(function (response) {
+          console.log(response);
+          _this.$store.commit('set_token', response.data);
+          console.log("更新token成功");
+        }).catch(function (error) {
+        console.log(error);
+        _this.$store.commit('delete_token');
+        alert('需要重新登录');
+      });
+    }
+
+
+
+
   },
   template: '<App/>'
 });

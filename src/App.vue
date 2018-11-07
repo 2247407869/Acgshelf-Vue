@@ -9,7 +9,7 @@
             </ul>
           </div>
           <div class="nav_con fr">
-            <ul class="fr" v-if="!$store.state.token">
+            <ul class="fr" v-if="$store.state.token===''">
               <li class="nav-item"><router-link class="nav-link" to="/login">Login</router-link></li>
               <li class="nav-item"><router-link class="nav-link" to="/register">Register</router-link></li>
             </ul>
