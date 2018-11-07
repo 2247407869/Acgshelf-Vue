@@ -7,17 +7,17 @@ var store = new vuex.Store({//store对象
     username:'',
   },
   mutations: {
-    set_token (state, token) {
-      state.token = token;
-      state.username = username;
-      localStorage.setItem(token, token);
-      localStorage.setItem(username, username);
+    set_token (state, data) {
+      state.token = data.token;
+      state.username = data.username;
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.username);
     },
     delete_token(state){
       state.token = '';
       state.username = '';
-      localStorage.setItem(token, '');
-      localStorage.setItem(username, '');
+      localStorage.setItem("token", '');
+      localStorage.setItem("username", '');
     }
   }
 });

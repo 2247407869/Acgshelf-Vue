@@ -26,5 +26,11 @@ new Vue({
   store,
   router,
   components: { App },
+  created(){
+    if(localStorage.getItem("token")!==null){
+      this.$store.state.token = localStorage.getItem("token");
+      this.$store.state.username = localStorage.getItem("username");
+    }
+  },
   template: '<App/>'
 });
