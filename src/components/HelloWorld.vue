@@ -40,24 +40,29 @@ export default {
     }
   },
   created: function() {
-    var qs = require('Qs');
-    var login_params = qs.stringify({
-      pageNum: this.url_params.pageNum,
-      pageSize: this.url_params.pageSize
-    });
-    this.$ajax.get('http://localhost:8080/anime/rank?pageNum='+this.url_params.pageNum+'&pageSize='+this.url_params.pageSize,
-      {headers:{'x-authorization':this.$store.state.token}})
+    this.$ajax.get('http://localhost:8080/anime/rank',
+      {params:this.url_params,
+        headers:{'x-authorization':this.$store.state.token}})
       .then((response) => {
+        console.log(response);
         this.animes=response.data.list;
-      });
+      }).catch(function (error) {
+      console.log(error);
+    });
   },
   methods:{
     collectionChange(id,collection){
-      this.$ajax.post('http://localhost:8080/anime/'+id+'?collection='+collection,
+      var qs = require('Qs');
+      var params = qs.stringify({
+        collection:collection
+      });
+      this.$ajax.post('http://localhost:8080/anime/'+id, params,
         {headers:{'x-authorization':this.$store.state.token}})
         .then((response) => {
-          this.animes=response.data.list;
-        });
+          console.log(response);
+        }).catch(function (error) {
+        console.log(error);
+      });
       console.log("send ok");
     }
   }
