@@ -40,21 +40,24 @@ export default {
     }
   },
   created: function() {
-    this.$http.get('http://localhost:8080/anime/rank',{params:this.url_params})
+    var qs = require('Qs');
+    var login_params = qs.stringify({
+      pageNum: this.url_params.pageNum,
+      pageSize: this.url_params.pageSize
+    });
+    this.$ajax.get('http://localhost:8080/anime/rank?pageNum='+this.url_params.pageNum+'&pageSize='+this.url_params.pageSize,
+      {headers:{'x-authorization':this.$store.state.token}})
       .then((response) => {
         this.animes=response.data.list;
       });
   },
   methods:{
     collectionChange(id,collection){
-      this.$http.post('http://localhost:8080/anime/'+id,
-        {'x-authorization':this.$store.state.token},
-        {"collection":collection})
-        .catch(function (error) {
-        console.log(error);
-        _this.$store.commit('delete_token');
-        alert('需要重新登录');
-      });
+      this.$ajax.post('http://localhost:8080/anime/'+id+'?collection='+collection,
+        {headers:{'x-authorization':this.$store.state.token}})
+        .then((response) => {
+          this.animes=response.data.list;
+        });
       console.log("send ok");
     }
   }
