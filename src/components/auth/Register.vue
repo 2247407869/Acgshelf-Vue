@@ -35,7 +35,7 @@
             username: this.form.username,
             password: this.form.password
           });
-          this.$ajax.post('http://localhost:8080/register', register_params)
+          this.$ajax.post(this.baseURL+'/register', register_params)
             .then(function (response) {
               console.log(response);
               if(response.data.status === '1'){

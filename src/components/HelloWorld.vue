@@ -40,7 +40,7 @@ export default {
     }
   },
   created: function() {
-    this.$ajax.get('http://localhost:8080/anime/rank',
+    this.$ajax.get(this.baseURL+'/anime/rank',
       {params:this.url_params,
         headers:{'x-authorization':this.$store.state.token}})
       .then((response) => {
@@ -56,7 +56,7 @@ export default {
       var params = qs.stringify({
         collection:collection
       });
-      this.$ajax.post('http://localhost:8080/anime/'+id, params,
+      this.$ajax.post(this.baseURL+'/anime/'+id, params,
         {headers:{'x-authorization':this.$store.state.token}})
         .then((response) => {
           console.log(response);

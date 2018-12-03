@@ -31,7 +31,7 @@
             password: this.form.password
           });
           var _this = this;
-          this.$ajax.post('http://localhost:8080/login', login_params)
+          this.$ajax.post(this.baseURL+'/login', login_params)
             .then(function (response) {
               console.log(response);
               if(response.data.status === '1'){

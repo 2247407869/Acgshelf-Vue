@@ -20,6 +20,8 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 
+Vue.prototype.baseURL = process.env.API_ROOT;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -34,7 +36,7 @@ new Vue({
         username:localStorage.getItem("username")});
     if(this.$store.state.token!==''){
       var _this = this;
-      this.$ajax.get('http://localhost:8080/refreshToken',
+      this.$ajax.get(this.baseURL+'/refreshToken',
         {headers:{'x-authorization':this.$store.state.token}})
         .then(function (response) {
           console.log(response);
