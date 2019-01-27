@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <el-container>
+
       <el-header height="42px">
         <div class="header-wrapper">
           <div class="nav_con fl">
@@ -20,9 +21,11 @@
           </div>
         </div>
       </el-header>
+
       <el-main>
         <router-view></router-view>
       </el-main>
+
     </el-container>
   </div>
 </template>
@@ -54,7 +57,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-    background-color: #b3c0d1;
+    background-color: #bbbbbb;
   }
 
   .el-header, .el-footer {
@@ -65,7 +68,7 @@
 
   .header-wrapper{
     margin: 0 auto;
-    width: 1160px;
+    width: 1100px;
   }
 
   .nav-item{
@@ -74,6 +77,7 @@
 
   ul {
     list-style: none;
+    padding: 0;
   }
 
   .fl {

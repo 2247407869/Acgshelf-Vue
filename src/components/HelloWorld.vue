@@ -1,16 +1,20 @@
 <template>
 
   <div class="ranking">
-    <li v-for="anime in animes">
+    <!--<div>hello</div>-->
+    <el-card class="box-card" shadow="hover" v-for="anime in animes" :key="anime.rank">
+
       <div class="li_left">
         <a :href=anime.url><img :src=anime.imagesSmall></a>
       </div>
+
       <div class="li_middle">
         <div>{{ anime.rank }}.{{ anime.nameCn }}</div>
         <br/><br/>
         <div>{{anime.epsCount}}</div>
         <div>{{anime.airDate}}</div>
       </div>
+
       <div class="li_right">
         <el-radio-group v-model="anime.collection" size="mini" @change="collectionChange(anime.id,anime.collection)">
           <el-radio-button label="1">抛弃</el-radio-button>
@@ -20,7 +24,8 @@
           <el-radio-button label="5">看过</el-radio-button>
         </el-radio-group>
       </div>
-    </li>
+
+    </el-card>
   </div>
 
 </template>
@@ -35,7 +40,8 @@ export default {
       radio:'',
       url_params: {
         pageNum:'1',
-        pageSize:'30'
+        pageSize:'30',
+        order:'rank',
       },
     }
   },
@@ -72,13 +78,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .ranking li{
-    list-style: none;
-    background-color: #e4e7ed;
-    border-bottom: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #b3c0d1;
-    height: 105px;
+  .ranking .box-card{
+    /*background-color: #e4e7ed;*/
+    /*border-bottom: solid;*/
+    /*border-bottom-width: 1px;*/
+    /*border-bottom-color: #b3c0d1;*/
+    /*height: 150px;*/
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
   .li_left{
     float: left;
@@ -90,6 +97,6 @@ export default {
   }
   .li_right{
     float: right;
-    padding-right: 50px;
+    /*padding-right: 50px;*/
   }
 </style>
