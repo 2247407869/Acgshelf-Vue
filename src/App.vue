@@ -7,6 +7,7 @@
           <div class="nav_con fl">
             <ul class="fl">
               <li class="nav-item"><router-link class="nav-link" to="/">ACGshelf</router-link></li>
+              <li class="nav-item"><router-link class="nav-link" to="/game">Game</router-link></li>
             </ul>
           </div>
           <div class="nav_con fr">
